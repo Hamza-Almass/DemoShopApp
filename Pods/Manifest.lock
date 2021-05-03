@@ -9,12 +9,14 @@ PODS:
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
+  - ViewAnimator (3.0.2)
 
 DEPENDENCIES:
   - JGProgressHUD
   - RxCocoa (= 6.1.0)
   - RxSwift (= 6.1.0)
   - SDWebImage (~> 5.0)
+  - ViewAnimator
 
 SPEC REPOS:
   trunk:
@@ -23,6 +25,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - ViewAnimator
 
 SPEC CHECKSUMS:
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
@@ -30,7 +33,8 @@ SPEC CHECKSUMS:
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  ViewAnimator: 16435576cd44fca0b0d63147d5031fd3e91d295a
 
-PODFILE CHECKSUM: 859c30b109082e22b6b38dfc3ffea654235b7519
+PODFILE CHECKSUM: 3408f39cdd31094c46060e3c030d5efbd09e17ad
 
 COCOAPODS: 1.10.1

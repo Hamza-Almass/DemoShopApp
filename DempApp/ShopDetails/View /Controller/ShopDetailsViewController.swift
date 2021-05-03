@@ -37,6 +37,8 @@ class ShopDetailsViewController: UIViewController {
     }
     @objc fileprivate func handleViewOnMap(){
         guard let mapController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MapViewController") as? MapViewController else { return }
+        mapController.shopMapOption = .showSingleShop
+        mapController.didReceivedShopData = didReceivedShopModel
         navigationController?.pushViewController(mapController, animated: true)
     }
     fileprivate func addShadowToImageView(){

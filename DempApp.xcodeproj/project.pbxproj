@@ -24,6 +24,7 @@
 		1311F5FF263FF36600F7FDBF /* ShopDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311F5FE263FF36600F7FDBF /* ShopDetailsViewModel.swift */; };
 		1311F603263FF5D300F7FDBF /* ShopDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311F602263FF5D300F7FDBF /* ShopDetailsViewController.swift */; };
 		1311F60F2640642500F7FDBF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311F60E2640642500F7FDBF /* MapViewController.swift */; };
+		1311F615264066C200F7FDBF /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311F614264066C200F7FDBF /* MapViewModel.swift */; };
 		E7CD16A6A1023E35AD7B7F91 /* Pods_DempApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABF1BED5DC48257976F22D0 /* Pods_DempApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		1311F5FE263FF36600F7FDBF /* ShopDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewModel.swift; sourceTree = "<group>"; };
 		1311F602263FF5D300F7FDBF /* ShopDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewController.swift; sourceTree = "<group>"; };
 		1311F60E2640642500F7FDBF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		1311F614264066C200F7FDBF /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		48E4AF2869746625C80DFFA9 /* Pods-DempApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DempApp.debug.xcconfig"; path = "Target Support Files/Pods-DempApp/Pods-DempApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABF1BED5DC48257976F22D0 /* Pods_DempApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DempApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9EBD6CEFD6B4D679F3A7F4 /* Pods-DempApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DempApp.release.xcconfig"; path = "Target Support Files/Pods-DempApp/Pods-DempApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		1311F60C2640640500F7FDBF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1311F614264066C200F7FDBF /* MapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				1311F5DC263FD6C100F7FDBF /* ShopViewModel.swift in Sources */,
 				1311F5D0263FCCDD00F7FDBF /* CoreDataManager.swift in Sources */,
 				1311F5FF263FF36600F7FDBF /* ShopDetailsViewModel.swift in Sources */,
+				1311F615264066C200F7FDBF /* MapViewModel.swift in Sources */,
 				1311F5AE263FC89F00F7FDBF /* DempApp.xcdatamodeld in Sources */,
 				1311F5D3263FCF4800F7FDBF /* ShopModel.swift in Sources */,
 				1311F60F2640642500F7FDBF /* MapViewController.swift in Sources */,

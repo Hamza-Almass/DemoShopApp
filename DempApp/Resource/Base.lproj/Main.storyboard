@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qdK-Dh-w8n">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="635"/>
                                 <color key="backgroundColor" name="myBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShopCell" rowHeight="116" id="4S8-0R-jON" customClass="ShopCell" customModule="DempApp" customModuleProvider="target">
@@ -73,24 +72,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UoZ-L6-aYC">
+                                <rect key="frame" x="20" y="770" width="374" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="myButtonColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Shops on Map">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="myBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qdK-Dh-w8n" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5XH-G1-CXs"/>
                             <constraint firstItem="qdK-Dh-w8n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Hku-sy-6l9"/>
-                            <constraint firstItem="qdK-Dh-w8n" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Wgz-AH-1e4"/>
+                            <constraint firstItem="qdK-Dh-w8n" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-139" id="Wgz-AH-1e4"/>
                             <constraint firstItem="qdK-Dh-w8n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xi4-9E-tT9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="ShopList" id="Yea-XX-HIE"/>
                     <connections>
+                        <outlet property="shopsOnMapButton" destination="UoZ-L6-aYC" id="Ota-r6-H5p"/>
                         <outlet property="tableView" destination="qdK-Dh-w8n" id="gT0-mc-npi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864" y="108"/>
+            <point key="canvasLocation" x="863.768115942029" y="107.8125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nAR-JM-BeO">
@@ -134,7 +143,7 @@
                                     <constraint firstAttribute="height" constant="48" id="gR0-dB-aaR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <color key="textColor" name="myLabelColor"/>
+                                <color key="textColor" name="myNavigationControllerColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearset point: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLa-TH-IYY">
@@ -214,27 +223,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ch3-Eg-c91">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="FMk-O9-O4f"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="myBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FMk-O9-O4f" firstAttribute="trailing" secondItem="ch3-Eg-c91" secondAttribute="trailing" id="5Oi-W1-YVS"/>
-                            <constraint firstItem="FMk-O9-O4f" firstAttribute="bottom" secondItem="ch3-Eg-c91" secondAttribute="bottom" id="8Fu-cR-njp"/>
-                            <constraint firstItem="ch3-Eg-c91" firstAttribute="leading" secondItem="FMk-O9-O4f" secondAttribute="leading" id="ufK-cj-8JK"/>
-                            <constraint firstItem="ch3-Eg-c91" firstAttribute="top" secondItem="FMk-O9-O4f" secondAttribute="top" id="ybm-2U-ffo"/>
+                            <constraint firstAttribute="trailing" secondItem="ch3-Eg-c91" secondAttribute="trailing" id="5Oi-W1-YVS"/>
+                            <constraint firstAttribute="bottom" secondItem="ch3-Eg-c91" secondAttribute="bottom" id="8Fu-cR-njp"/>
+                            <constraint firstItem="ch3-Eg-c91" firstAttribute="leading" secondItem="joB-tf-0TA" secondAttribute="leading" id="ufK-cj-8JK"/>
+                            <constraint firstItem="ch3-Eg-c91" firstAttribute="top" secondItem="joB-tf-0TA" secondAttribute="top" id="ybm-2U-ffo"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="alr-x7-oRs"/>
+                    <connections>
+                        <outlet property="mapView" destination="ch3-Eg-c91" id="Ojd-jQ-F2u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfL-4i-P7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="105"/>
+            <point key="canvasLocation" x="2430" y="108"/>
         </scene>
     </scenes>
     <resources>
         <namedColor name="myBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="myButtonColor">
+            <color red="0.50588235294117645" green="0.83137254901960789" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="myDetailsLabel">
             <color red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -245,8 +260,5 @@
         <namedColor name="myNavigationControllerColor">
             <color red="0.98431372549019602" green="0.5490196078431373" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

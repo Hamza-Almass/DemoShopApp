@@ -13,12 +13,25 @@ class ShopListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var shopListViewModel: ShopListViewModel!
+    @IBOutlet weak var shopsOnMapButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareTableView()
         colorfulNavigationController()
         bindTableView()
+        prepareButtonStyle()
+    }
+    fileprivate func prepareButtonStyle(){
+        shopsOnMapButton.layer.cornerRadius = 8
+        shopsOnMapButton.clipsToBounds = true
+        shopsOnMapButton.addTarget(self, action: #selector(handleOpenMaps), for: .touchUpInside)
+    }
+    @objc fileprivate func handleOpenMaps(){
+        guard let mapViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MapViewController") as? MapViewController else { return }
+        mapViewController.shopMapOption = .showAllShop
+        mapViewController.didRecivedShopsData = shopListViewModel.shopDataBehiviorRelay.value
+        navigationController?.pushViewController(mapViewController, animated: true)
     }
     fileprivate func prepareTableView(){
         tableView.rowHeight = UITableView.automaticDimension

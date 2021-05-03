@@ -10,5 +10,6 @@ target 'DempApp' do
     pod 'RxCocoa', '6.1.0'
 pod 'SDWebImage', '~> 5.0'
 pod 'JGProgressHUD'
+pod "ViewAnimator"
 
 end
