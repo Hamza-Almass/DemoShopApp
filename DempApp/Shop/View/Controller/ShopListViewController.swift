@@ -49,9 +49,20 @@ class ShopListViewController: UIViewController {
             cell.selectedBackgroundView = v
             return cell
         }.disposed(by: shopListViewModel.disposeBag)
+        
+        tableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexP) in
+            guard let s = self else { return }
+            guard let shopDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ShopDetails") as? ShopDetailsViewController else { return }
+            shopDetailsVC.didReceivedShopModel = s.shopListViewModel.shopDataBehiviorRelay.value[indexP.row]
+            s.navigationController?.pushViewController(shopDetailsVC, animated: true)
+            
+        }).disposed(by: shopListViewModel.disposeBag)
     }
     fileprivate func bindCoreDataToTableView(){
-        self.shopListViewModel.shopDataBehiviorRelay.accept(CoreDataManager.shared.fetchShopsFromCoreData())
+        DispatchQueue.main.async {
+            self.shopListViewModel.shopDataBehiviorRelay.accept(CoreDataManager.shared.fetchShopsFromCoreData())
+        }
+     
     }
 
 }
