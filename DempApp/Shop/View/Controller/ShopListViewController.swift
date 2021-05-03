@@ -42,17 +42,19 @@ class ShopListViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "myNavigationControllerColor")!]
     }
     fileprivate func bindTableView(){
+        
         let progressHud = self.showProgressHud()
-        shopListViewModel = ShopListViewModel(completion: { [weak self] (error) in
+        
+        shopListViewModel = ShopListViewModel { [weak self] error in
             guard let s = self else { return }
+            s.hideProgressHud(progressHud: progressHud)
             if let error = error {
                 print(error)
                 s.bindCoreDataToTableView()
-                s.hideProgressHud(progressHud: progressHud)
                 return
             }
-            s.hideProgressHud(progressHud: progressHud)
-        })
+        }
+
         shopListViewModel.shopDataBehiviorRelay.bind(to: tableView.rx.items) { (tableView , element , model) in
              let cell = tableView.dequeueReusableCell(withIdentifier: SHOP_CELL, for: IndexPath(row: element, section: 0)) as! ShopCell
             cell.configureCell(data: model)

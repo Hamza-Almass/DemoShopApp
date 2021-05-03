@@ -35,7 +35,14 @@ class CoreDataManager {
         }
     }
     
-    func deleteObjectFromCoreData(){
+    func saveInCoreData(shopModel: Shop){
+        (UIApplication.shared.delegate as! AppDelegate).persistentContainer.performBackgroundTask { (context) in
+            self.deleteObjectFromCoreData(context: context)
+            self.saveToCoreData(shopModel: shopModel, context: context)
+        }
+    }
+    
+    private func deleteObjectFromCoreData(context: NSManagedObjectContext){
         do {
             // Fetch data
             let objects = try context.fetch(fetchRequest)
@@ -48,8 +55,10 @@ class CoreDataManager {
         }
     }
     
-    func saveToCoreData(shopModel: Shop) {
+    private func saveToCoreData(shopModel: Shop,context: NSManagedObjectContext) {
+        
         context.perform {
+            print(String(describing: "Is we are on the main thread: \(Thread.isMainThread)"))
             guard let shopModelData = shopModel.data else { return }
             shopModelData.forEach({
                 
@@ -92,8 +101,6 @@ class CoreDataManager {
                 }catch{
                     fatalError("Error with save data to core data")
                 }
-                
-                
             })
         }
     }
