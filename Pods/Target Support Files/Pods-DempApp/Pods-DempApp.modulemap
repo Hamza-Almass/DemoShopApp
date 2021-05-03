@@ -1,0 +1,6 @@
+framework module Pods_DempApp {
+  umbrella header "Pods-DempApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
