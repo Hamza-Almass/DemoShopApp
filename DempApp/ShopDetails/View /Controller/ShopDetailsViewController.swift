@@ -23,14 +23,20 @@ class ShopDetailsViewController: UIViewController {
     @IBOutlet weak var shopDetailsLabel: UILabel!
     @IBOutlet weak var shopNearsetPointLabel: UILabel!
     @IBOutlet weak var viewonMapButton: UIButton!
+    @IBOutlet weak var brefLabel: UILabel!
+    @IBOutlet weak var nearestLabel: UILabel!
     
     private var shopDetailsViewModel: ShopDetailsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bindUI()
-        addShadowToImageView()
         setRightBarButton()
+        addShadowToView(myView: shopCoverImageView)
+        
+        brefLabel.text = "Bref".lozalization()
+        nearestLabel.text = "Nearest point".lozalization()
+        
     }
     fileprivate func setRightBarButton(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "map").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleViewOnMap))
@@ -40,15 +46,6 @@ class ShopDetailsViewController: UIViewController {
         mapController.shopMapOption = .showSingleShop
         mapController.didReceivedShopData = didReceivedShopModel
         navigationController?.pushViewController(mapController, animated: true)
-    }
-    fileprivate func addShadowToImageView(){
-        shopCoverImageView.layer.cornerRadius = 8
-        shopCoverImageView.clipsToBounds = true
-        shopCoverImageView.layer.shadowColor = UIColor.lightGray.cgColor
-        shopCoverImageView.layer.shadowOffset = .init(width: 0, height: 3)
-        shopCoverImageView.layer.shadowRadius = 4
-        shopCoverImageView.layer.shadowOpacity = 4
-        shopCoverImageView.layer.masksToBounds = false
     }
     fileprivate func bindUI(){
         shopDetailsViewModel.shopName.bind(to: shopNameLabel.rx.text).disposed(by: shopDetailsViewModel.disposeBag)

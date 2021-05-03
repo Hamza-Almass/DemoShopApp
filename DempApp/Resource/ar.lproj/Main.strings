@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "Shop name"; ObjectID = "2QX-Le-0aG"; */
+"2QX-Le-0aG.text" = "Shop name";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9qG-sk-MCV"; */
+"9qG-sk-MCV.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "DOl-Uv-ccD"; */
+"DOl-Uv-ccD.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "GFL-7i-jlO"; */
+"GFL-7i-jlO.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Shops on Map"; ObjectID = "UoZ-L6-aYC"; */
+"UoZ-L6-aYC.normalTitle" = "Shops on Map";
+
+/* Class = "UILabel"; text = "Nearset point: "; ObjectID = "XLa-TH-IYY"; */
+"XLa-TH-IYY.text" = "Nearset point: ";
+
+/* Class = "UINavigationItem"; title = "ShopList"; ObjectID = "Yea-XX-HIE"; */
+"Yea-XX-HIE.title" = "ShopList";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gpA-m3-vLU"; */
+"gpA-m3-vLU.text" = "Label";
+
+/* Class = "UILabel"; text = "Bref:"; ObjectID = "rCW-na-lYH"; */
+"rCW-na-lYH.text" = "Bref:";

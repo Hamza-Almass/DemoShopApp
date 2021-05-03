@@ -22,4 +22,13 @@ extension UIViewController {
         progressHud.dismiss(afterDelay: 2)
     }
     
+    func addShadowToView(myView: UIView){
+        myView.layer.cornerRadius = 8
+        myView.clipsToBounds = true
+        myView.layer.shadowColor = UIColor.lightGray.cgColor
+        myView.layer.shadowOffset = .init(width: 0, height: 1)
+        myView.layer.shadowRadius = 4
+        myView.layer.shadowOpacity = 4
+        myView.layer.masksToBounds = false
+    }
 }

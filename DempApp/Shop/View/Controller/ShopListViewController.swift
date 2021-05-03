@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import ViewAnimator
 
 class ShopListViewController: UIViewController {
 
@@ -21,7 +22,10 @@ class ShopListViewController: UIViewController {
         colorfulNavigationController()
         bindTableView()
         prepareButtonStyle()
+        self.navigationItem.title = "ShopList".lozalization()
+        shopsOnMapButton.setTitle("Shops on Map".lozalization(), for: .normal)
     }
+    
     fileprivate func prepareButtonStyle(){
         shopsOnMapButton.layer.cornerRadius = 8
         shopsOnMapButton.clipsToBounds = true
@@ -51,6 +55,9 @@ class ShopListViewController: UIViewController {
             if let error = error {
                 print(error)
                 s.bindCoreDataToTableView()
+                DispatchQueue.main.async {
+                    UIView.animate(views: s.tableView.visibleCells, animations: [AnimationType.zoom(scale: 2)])
+                }
                 return
             }
         }
@@ -64,6 +71,8 @@ class ShopListViewController: UIViewController {
             cell.selectedBackgroundView = v
             return cell
         }.disposed(by: shopListViewModel.disposeBag)
+        
+        UIView.animate(views: tableView.visibleCells, animations: [AnimationType.zoom(scale: 2)])
         
         tableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexP) in
             guard let s = self else { return }

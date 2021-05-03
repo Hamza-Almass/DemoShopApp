@@ -33,8 +33,6 @@ struct ShopListViewModel {
                     guard let data = shop.data else { return }
                     shopDataBehiviorRelay.accept(data)
                     CoreDataManager.shared.saveInCoreData(shopModel: shop)
-                    //CoreDataManager.shared.deleteObjectFromCoreData()
-                    //CoreDataManager.shared.saveToCoreData(shopModel: shop)
                     completion(nil)
                 }
                 
