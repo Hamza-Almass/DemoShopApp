@@ -22,7 +22,7 @@ struct ShopListViewModel {
     
     func fetchShops(completion: @escaping(Error?) -> Void) {
         isLoadingFinish.accept(false)
-        let url = "https://432b7a44-b7f7-471e-b0ae-0f7003aa21a7.mock.pstmn.io/v1/shops"
+        let url = "https://2cd6c999-9229-49d0-a723-bd31c7b22edd.mock.pstmn.io/getShops/"
         WebService.shared.fetchData(url: url, type: Shop.self) { result in
             isLoadingFinish.accept(true)
             switch result {

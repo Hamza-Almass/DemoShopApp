@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import ViewAnimator
 
 class ShopDetailsViewController: UIViewController {
     
@@ -17,36 +18,52 @@ class ShopDetailsViewController: UIViewController {
         }
     }
     
-    
     @IBOutlet weak var shopNameLabel: UILabel!
     @IBOutlet weak var shopCoverImageView: UIImageView!
     @IBOutlet weak var shopDetailsLabel: UILabel!
     @IBOutlet weak var shopNearsetPointLabel: UILabel!
-    @IBOutlet weak var viewonMapButton: UIButton!
     @IBOutlet weak var brefLabel: UILabel!
     @IBOutlet weak var nearestLabel: UILabel!
     
     private var shopDetailsViewModel: ShopDetailsViewModel!
     
+    //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         bindUI()
         setRightBarButton()
         addShadowToView(myView: shopCoverImageView)
-        
+        localizeText()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    //MARK:- Animate views
+    fileprivate func animateViews(){
+        let animationType = AnimationType.zoom(scale: 0.2)
+        UIView.animate(views: [shopCoverImageView], animations: [animationType],duration: 0.5)
+        // Animate labels
+        let animationTypeLabel = AnimationType.random()
+        UIView.animate(views: [brefLabel , shopDetailsLabel,nearestLabel , shopNearsetPointLabel], animations: [animationTypeLabel] , duration: 1)
+    }
+    //MARK:- Localize text
+    fileprivate func localizeText(){
         brefLabel.text = "Bref".lozalization()
         nearestLabel.text = "Nearest point".lozalization()
-        
     }
+    //MARK:- Set right bar button
     fileprivate func setRightBarButton(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "map").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleViewOnMap))
     }
+    //MARK:- handle View Shop on map
     @objc fileprivate func handleViewOnMap(){
         guard let mapController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MapViewController") as? MapViewController else { return }
         mapController.shopMapOption = .showSingleShop
         mapController.didReceivedShopData = didReceivedShopModel
         navigationController?.pushViewController(mapController, animated: true)
     }
+    //MARK:- Bind UI
     fileprivate func bindUI(){
         shopDetailsViewModel.shopName.bind(to: shopNameLabel.rx.text).disposed(by: shopDetailsViewModel.disposeBag)
         shopDetailsViewModel.shopeDetails.bind(to: shopDetailsLabel.rx.text).disposed(by: shopDetailsViewModel.disposeBag)
@@ -56,7 +73,7 @@ class ShopDetailsViewController: UIViewController {
         }else{
             shopDetailsViewModel.shopCoverImage.map({return UIImage(data: $0)}).bind(to: shopCoverImageView.rx.image).disposed(by: shopDetailsViewModel.disposeBag)
         }
-
+        animateViews()
     }
     
 }

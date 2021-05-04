@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1308B7BF2641371000314830 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308B7BE2641371000314830 /* UIButton + Extension.swift */; };
 		1311F5A4263FC89F00F7FDBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311F5A3263FC89F00F7FDBF /* AppDelegate.swift */; };
 		1311F5A6263FC89F00F7FDBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311F5A5263FC89F00F7FDBF /* SceneDelegate.swift */; };
 		1311F5A8263FC89F00F7FDBF /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311F5A7263FC89F00F7FDBF /* ShopListViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1308B7BE2641371000314830 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		1311F5A0263FC89F00F7FDBF /* DempApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DempApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1311F5A3263FC89F00F7FDBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1311F5A5263FC89F00F7FDBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				1311F5F6263FEA8100F7FDBF /* ViewController + Extension.swift */,
 				1311F62C26409C7B00F7FDBF /* String + Extension.swift */,
+				1308B7BE2641371000314830 /* UIButton + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				1311F615264066C200F7FDBF /* MapViewModel.swift in Sources */,
 				1311F5AE263FC89F00F7FDBF /* DempApp.xcdatamodeld in Sources */,
 				1311F5D3263FCF4800F7FDBF /* ShopModel.swift in Sources */,
+				1308B7BF2641371000314830 /* UIButton + Extension.swift in Sources */,
 				1311F60F2640642500F7FDBF /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

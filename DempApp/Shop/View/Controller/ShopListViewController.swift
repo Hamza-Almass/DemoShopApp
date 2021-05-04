@@ -16,48 +16,56 @@ class ShopListViewController: UIViewController {
     var shopListViewModel: ShopListViewModel!
     @IBOutlet weak var shopsOnMapButton: UIButton!
     
+    //MARK:- viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareTableView()
-        colorfulNavigationController()
         bindTableView()
         prepareButtonStyle()
+        localizeTexts()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    //MARK:- Localize texts
+    fileprivate func localizeTexts(){
+        // Localization
         self.navigationItem.title = "ShopList".lozalization()
         shopsOnMapButton.setTitle("Shops on Map".lozalization(), for: .normal)
     }
-    
+    //MARK:- Prepare button style
     fileprivate func prepareButtonStyle(){
         shopsOnMapButton.layer.cornerRadius = 8
         shopsOnMapButton.clipsToBounds = true
         shopsOnMapButton.addTarget(self, action: #selector(handleOpenMaps), for: .touchUpInside)
     }
+    //MARK:- Handle show all shops on map
     @objc fileprivate func handleOpenMaps(){
-        guard let mapViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MapViewController") as? MapViewController else { return }
-        mapViewController.shopMapOption = .showAllShop
-        mapViewController.didRecivedShopsData = shopListViewModel.shopDataBehiviorRelay.value
-        navigationController?.pushViewController(mapViewController, animated: true)
+        shopsOnMapButton.bounceTapButton { [weak self] (_) in
+            guard let s = self else { return }
+            guard let mapViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MapViewController") as? MapViewController else { return }
+            mapViewController.shopMapOption = .showAllShop
+            mapViewController.didRecivedShopsData = s.shopListViewModel.shopDataBehiviorRelay.value
+            s.navigationController?.pushViewController(mapViewController, animated: true)
+        }
     }
+    //MARK:- Prepare table view
     fileprivate func prepareTableView(){
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.contentInset = .init(top: 0, left: 8, bottom: 0, right: -8)
     }
-    fileprivate func colorfulNavigationController(){
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "myNavigationControllerColor")!]
-    }
+    //MARK:- Bind table view
     fileprivate func bindTableView(){
         
         let progressHud = self.showProgressHud()
-        
         shopListViewModel = ShopListViewModel { [weak self] error in
             guard let s = self else { return }
             s.hideProgressHud(progressHud: progressHud)
             if let error = error {
                 print(error)
                 s.bindCoreDataToTableView()
-                DispatchQueue.main.async {
-                    UIView.animate(views: s.tableView.visibleCells, animations: [AnimationType.zoom(scale: 2)])
-                }
                 return
             }
         }
@@ -71,9 +79,10 @@ class ShopListViewController: UIViewController {
             cell.selectedBackgroundView = v
             return cell
         }.disposed(by: shopListViewModel.disposeBag)
-        
-        UIView.animate(views: tableView.visibleCells, animations: [AnimationType.zoom(scale: 2)])
-        
+        tableViewItemSelected()
+    }
+    //MARK:- Item selected table view
+    fileprivate func tableViewItemSelected(){
         tableView.rx.itemSelected.subscribe(onNext: { [weak self] (indexP) in
             guard let s = self else { return }
             guard let shopDetailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ShopDetails") as? ShopDetailsViewController else { return }
@@ -82,12 +91,11 @@ class ShopListViewController: UIViewController {
             
         }).disposed(by: shopListViewModel.disposeBag)
     }
+    //MARK:- Bind core data to table view
     fileprivate func bindCoreDataToTableView(){
         DispatchQueue.main.async {
             self.shopListViewModel.shopDataBehiviorRelay.accept(CoreDataManager.shared.fetchShopsFromCoreData())
         }
-     
     }
-
 }
 
