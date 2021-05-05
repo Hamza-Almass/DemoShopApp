@@ -22,7 +22,6 @@ class ShopDetailsViewController: UIViewController {
     @IBOutlet weak var shopCoverImageView: UIImageView!
     @IBOutlet weak var shopDetailsLabel: UILabel!
     @IBOutlet weak var shopNearsetPointLabel: UILabel!
-    @IBOutlet weak var brefLabel: UILabel!
     @IBOutlet weak var nearestLabel: UILabel!
     
     private var shopDetailsViewModel: ShopDetailsViewModel!
@@ -32,7 +31,6 @@ class ShopDetailsViewController: UIViewController {
         super.viewDidLoad()
         bindUI()
         setRightBarButton()
-        //addShadowToView(myView: shopCoverImageView)
         localizeText()
     }
    
@@ -42,11 +40,10 @@ class ShopDetailsViewController: UIViewController {
         UIView.animate(views: [shopCoverImageView], animations: [animationType],duration: 0.5)
         // Animate labels
         let animationTypeLabel = AnimationType.random()
-        UIView.animate(views: [brefLabel , shopDetailsLabel,nearestLabel , shopNearsetPointLabel], animations: [animationTypeLabel] , duration: 1)
+        UIView.animate(views: [shopDetailsLabel,nearestLabel , shopNearsetPointLabel], animations: [animationTypeLabel] , duration: 1)
     }
     //MARK:- Localize text
     fileprivate func localizeText(){
-        brefLabel.text = "Bref".lozalization()
         nearestLabel.text = "Nearest point".lozalization()
     }
     //MARK:- Set right bar button
