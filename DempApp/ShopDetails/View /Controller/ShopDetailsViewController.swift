@@ -32,13 +32,10 @@ class ShopDetailsViewController: UIViewController {
         super.viewDidLoad()
         bindUI()
         setRightBarButton()
-        addShadowToView(myView: shopCoverImageView)
+        //addShadowToView(myView: shopCoverImageView)
         localizeText()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
-    }
+   
     //MARK:- Animate views
     fileprivate func animateViews(){
         let animationType = AnimationType.zoom(scale: 0.2)

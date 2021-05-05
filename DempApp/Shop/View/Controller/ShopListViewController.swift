@@ -24,10 +24,6 @@ class ShopListViewController: UIViewController {
         prepareButtonStyle()
         localizeTexts()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
     //MARK:- Localize texts
     fileprivate func localizeTexts(){
         // Localization
@@ -73,7 +69,8 @@ class ShopListViewController: UIViewController {
         shopListViewModel.shopDataBehiviorRelay.bind(to: tableView.rx.items) { (tableView , element , model) in
              let cell = tableView.dequeueReusableCell(withIdentifier: SHOP_CELL, for: IndexPath(row: element, section: 0)) as! ShopCell
             cell.configureCell(data: model)
-            cell.accessoryType = .disclosureIndicator
+//            cell.accessoryType = .disclosureIndicator
+//            cell.accessoryType = .
             let v = UIView()
             v.backgroundColor = .clear
             cell.selectedBackgroundView = v

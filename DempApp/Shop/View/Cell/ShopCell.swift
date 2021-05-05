@@ -17,13 +17,24 @@ class ShopCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        // Set layer for the image view
+        logoImageView.layer.cornerRadius = 35
+        self.backgroundColor = .white
+        logoImageView.layer.borderWidth = 0.2
+        logoImageView.layer.borderColor = UIColor.lightGray.cgColor
+        setSpaceBetweenCells()
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        //self.contentView.frame = self.contentView.frame.inset(by: .init(top: 12, left: 12, bottom: 12, right: 12))
-        setupShadow()
+    fileprivate func setSpaceBetweenCells(){
+        let v = UIView()
+        addSubview(v)
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = UIColor(named: "myBackgroundColor")!
+        v.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        v.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        v.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        v.sendSubviewToBack(self)
+        v.layer.zPosition = 1
     }
-    
     func configureCell(data: ShopData){
         if let logoURL = URL(string: data.logo ?? "") {
            logoImageView.sd_setImage(with: logoURL, completed: nil)
@@ -33,21 +44,6 @@ class ShopCell: UITableViewCell {
         shopNameLabel.text = data.name
         shopDetailsLabel?.text = data.details
     }
-    func setupShadow(){
-        self.layer.cornerRadius = 8
-        self.layer.shadowOffset = CGSize(width: 0, height: 3)
-        self.layer.shadowRadius = 3
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds,
-                                             byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 8, height:
-                                                                                            8)).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.rasterizationScale = UIScreen.main.scale
-        self.layer.masksToBounds = false
-      
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
